@@ -94,7 +94,7 @@ public final class TransactionFragment extends SherlockFragment
 	{
 		final Wallet wallet = ((WalletApplication) activity.getApplication()).getWallet();
 
-		final byte[] serializedTx = tx.unsafeWorldcoinSerialize();
+		final byte[] serializedTx = tx.unsafeLitecoinSerialize();
 
 		Address from = null;
 		boolean fromMine = false;

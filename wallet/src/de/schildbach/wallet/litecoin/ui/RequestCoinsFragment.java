@@ -44,7 +44,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.ShareActionProvider;
 import com.google.litecoin.core.Address;
 import com.google.litecoin.core.ECKey;
-import com.google.litecoin.uri.WorldcoinURI;
+import com.google.litecoin.uri.LitecoinURI;
 
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
@@ -292,7 +292,7 @@ public final class RequestCoinsFragment extends SherlockFragment implements Amou
 		final String label = includeLabel ? AddressBookProvider.resolveLabel(activity, address.toString()) : null;
 		final BigInteger amount = amountView.getAmount();
 
-		return WorldcoinURI.convertToWorldcoinURI(address, amount, label, null).toString();
+		return LitecoinURI.convertToLitecoinURI(address, amount, label, null).toString();
 	}
 
 	public void useCalculatedAmount(final BigInteger amount)

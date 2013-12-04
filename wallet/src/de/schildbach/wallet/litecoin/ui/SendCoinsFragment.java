@@ -64,14 +64,14 @@ import com.google.litecoin.core.*;
 import com.google.litecoin.core.TransactionConfidence.ConfidenceType;
 import com.google.litecoin.core.Wallet.BalanceType;
 import com.google.litecoin.core.Wallet.SendRequest;
-import com.google.litecoin.uri.WorldcoinURI;
-import com.google.litecoin.uri.WorldcoinURIParseException;
+import com.google.litecoin.uri.LitecoinURI;
+import com.google.litecoin.uri.LitecoinURIParseException;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
-import de.schildbach.wallet.litecoin.integration.android.WorldcoinIntegration;
+import de.schildbach.wallet.litecoin.integration.android.LitecoinIntegration;
 import de.schildbach.wallet.litecoin.service.BlockchainService;
 import de.schildbach.wallet.litecoin.service.BlockchainServiceImpl;
 import de.schildbach.wallet.litecoin.util.WalletUtils;
@@ -518,12 +518,12 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 			{
 				try
 				{
-					final WorldcoinURI litecoinUri = new WorldcoinURI(null, contents);
+					final LitecoinURI litecoinUri = new LitecoinURI(null, contents);
 					final Address address = litecoinUri.getAddress();
 					final String addressLabel = litecoinUri.getLabel();
 					update(address != null ? address.toString() : null, addressLabel, litecoinUri.getAmount());
 				}
-				catch (final WorldcoinURIParseException x)
+				catch (final LitecoinURIParseException x)
 				{
 					activity.parseErrorDialog(contents);
 				}
@@ -816,7 +816,7 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
             service.broadcastTransaction(sentTransaction);
 
             final Intent result = new Intent();
-            WorldcoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
+            LitecoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
             activity.setResult(Activity.RESULT_OK, result);
 
             // final String label = AddressBookProvider.resolveLabel(contentResolver,

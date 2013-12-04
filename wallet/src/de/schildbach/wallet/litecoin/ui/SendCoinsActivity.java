@@ -28,8 +28,8 @@ import android.webkit.WebView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.litecoin.uri.WorldcoinURI;
-import com.google.litecoin.uri.WorldcoinURIParseException;
+import com.google.litecoin.uri.LitecoinURI;
+import com.google.litecoin.uri.LitecoinURIParseException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import de.schildbach.wallet.litecoin.R;
@@ -120,12 +120,12 @@ public final class SendCoinsActivity extends AbstractWalletActivity
 		{
 			try
 			{
-				final WorldcoinURI litecoinUri = new WorldcoinURI(null, intentUri.toString());
+				final LitecoinURI litecoinUri = new LitecoinURI(null, intentUri.toString());
 				address = litecoinUri.getAddress().toString();
 				addressLabel = litecoinUri.getLabel();
 				amount = litecoinUri.getAmount();
 			}
-			catch (final WorldcoinURIParseException x)
+			catch (final LitecoinURIParseException x)
 			{
 				parseErrorDialog(intentUri.toString());
 				return;
@@ -162,19 +162,19 @@ public final class SendCoinsActivity extends AbstractWalletActivity
             if(contents == null) return;
             Log.d("Worldcoin", "SCAN RESULT:" + contents);
             try {
-                final WorldcoinURI uri = new WorldcoinURI(null, contents);
+                final LitecoinURI uri = new LitecoinURI(null, contents);
                 Log.d("Worldcoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
                 updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
             }
-            catch (final WorldcoinURIParseException x)
+            catch (final LitecoinURIParseException x)
             {
                 // Try prepending litecoin:
                 try {
-                    final WorldcoinURI uri = new WorldcoinURI(null, "litecoin:" + contents);
+                    final LitecoinURI uri = new LitecoinURI(null, "litecoin:" + contents);
                     Log.d("Worldcoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
                     updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
                 }
-                catch (final WorldcoinURIParseException y)
+                catch (final LitecoinURIParseException y)
                 {
                     parseErrorDialog(scanResult.getContents());
                 }
