@@ -108,7 +108,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 
-				<data android:scheme="ltctx" />
+				<data android:scheme="wdctx" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
@@ -116,7 +116,7 @@
 			<intent-filter>
 				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-				<data android:mimeType="application/x-ltctx" />
+				<data android:mimeType="application/x-wdctx" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
@@ -168,7 +168,7 @@
 
 		<receiver
 			android:name=".WalletBalanceWidgetProvider"
-			android:label="Litecoin Wallet Balance" >
+			android:label="Worldcoin Wallet Balance" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>

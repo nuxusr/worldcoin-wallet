@@ -116,7 +116,7 @@ public final class WalletBalanceFragment extends Fragment
 		super.onViewCreated(view, savedInstanceState);
 
 		viewBalance = (CurrencyTextView) view.findViewById(R.id.wallet_balance);
-		viewBalance.setPrefix(Constants.CURRENCY_CODE_LITECOIN);
+		viewBalance.setPrefix(Constants.CURRENCY_CODE_WORLDCOIN);
 
 		viewBalanceLocal = (CurrencyTextView) view.findViewById(R.id.wallet_balance_local);
 		viewBalanceLocal.setPrecision(Constants.LOCAL_PRECISION);
@@ -152,7 +152,7 @@ public final class WalletBalanceFragment extends Fragment
 		if (balance != null)
 		{
 			viewBalance.setVisibility(View.VISIBLE);
-			viewBalance.setPrecision(Integer.parseInt(prefs.getString(Constants.PREFS_KEY_LTC_PRECISION, Integer.toString(Constants.LTC_PRECISION))));
+			viewBalance.setPrecision(Integer.parseInt(prefs.getString(Constants.PREFS_KEY_WDC_PRECISION, Integer.toString(Constants.WDC_PRECISION))));
 			viewBalance.setAmount(balance);
 
 			if (showLocalBalance)

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/base.iml" filepath="$PROJECT_DIR$/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/integration-android/integration-android.iml" filepath="$PROJECT_DIR$/integration-android/integration-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../worldcoinj/core/litecoinj.iml" filepath="$PROJECT_DIR$/../worldcoinj/core/litecoinj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../worldcoinj/litecoinj-parent.iml" filepath="$PROJECT_DIR$/../worldcoinj/litecoinj-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../worldcoinj/tools/litecoinj-tools.iml" filepath="$PROJECT_DIR$/../worldcoinj/tools/litecoinj-tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-integration-android/sample-integration-android.iml" filepath="$PROJECT_DIR$/sample-integration-android/sample-integration-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/wallet/wallet.iml" filepath="$PROJECT_DIR$/wallet/wallet.iml" />
       <module fileurl="file://$PROJECT_DIR$/wallet/gen-external-apklibs/~apklib-com.actionbarsherlock_library_4.1.0.iml" filepath="$PROJECT_DIR$/wallet/gen-external-apklibs/~apklib-com.actionbarsherlock_library_4.1.0.iml" />

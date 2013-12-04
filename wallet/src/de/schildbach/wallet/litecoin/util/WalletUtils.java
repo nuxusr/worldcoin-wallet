@@ -195,12 +195,12 @@ public class WalletUtils
 		}
 	}
 
-	public static BigInteger localValue(final BigInteger ltcValue, final BigInteger rate)
+	public static BigInteger localValue(final BigInteger wdcValue, final BigInteger rate)
 	{
-		return ltcValue.multiply(rate).divide(Utils.COIN);
+		return wdcValue.multiply(rate).divide(Utils.COIN);
 	}
 
-	public static BigInteger ltcValue(final BigInteger localValue, final BigInteger rate)
+	public static BigInteger wdcValue(final BigInteger localValue, final BigInteger rate)
 	{
 		return localValue.multiply(Utils.COIN).divide(rate);
 	}
@@ -244,7 +244,7 @@ public class WalletUtils
 	{
 		final DateFormat format = Iso8601Format.newDateTimeFormatT();
 
-		out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your Litecoins.\n");
+		out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your Worldcoins.\n");
 
 		for (final ECKey key : keys)
 		{

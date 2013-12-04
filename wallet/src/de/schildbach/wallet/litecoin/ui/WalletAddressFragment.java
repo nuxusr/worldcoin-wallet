@@ -37,7 +37,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.litecoin.core.Address;
-import com.google.litecoin.uri.LitecoinURI;
+import com.google.litecoin.uri.WorldcoinURI;
 
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
@@ -145,7 +145,7 @@ public final class WalletAddressFragment extends Fragment
 			litecoinAddressLabel.setText(WalletUtils.formatAddress(selectedAddress, Constants.ADDRESS_FORMAT_GROUP_SIZE,
 					Constants.ADDRESS_FORMAT_LINE_SIZE));
 
-			final String addressStr = LitecoinURI.convertToLitecoinURI(selectedAddress, null, null, null);
+			final String addressStr = WorldcoinURI.convertToWorldcoinURI(selectedAddress, null, null, null);
 
 			final int size = (int) (256 * getResources().getDisplayMetrics().density);
 			qrCodeBitmap = WalletUtils.getQRCodeBitmap(addressStr, size);

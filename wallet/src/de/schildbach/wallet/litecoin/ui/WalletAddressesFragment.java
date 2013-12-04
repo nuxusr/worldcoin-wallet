@@ -43,7 +43,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.litecoin.core.Address;
 import com.google.litecoin.core.ECKey;
-import com.google.litecoin.uri.LitecoinURI;
+import com.google.litecoin.uri.WorldcoinURI;
 
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
@@ -236,7 +236,7 @@ public final class WalletAddressesFragment extends SherlockListFragment
 
 			private void handleShowQr(final Address address)
 			{
-				final String uri = LitecoinURI.convertToLitecoinURI(address, null, null, null);
+				final String uri = WorldcoinURI.convertToWorldcoinURI(address, null, null, null);
 				final int size = (int) (256 * getResources().getDisplayMetrics().density);
 				BitmapFragment.show(getFragmentManager(), WalletUtils.getQRCodeBitmap(uri, size));
 			}
@@ -250,7 +250,7 @@ public final class WalletAddressesFragment extends SherlockListFragment
                     clipboard.setText(address.toString());
                 } else {
                     android.content.ClipboardManager clipboard = (android.content.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
-                    android.content.ClipData clip = android.content.ClipData.newPlainText("LTC Address", address.toString());
+                    android.content.ClipData clip = android.content.ClipData.newPlainText("WDC Address", address.toString());
                     clipboard.setPrimaryClip(clip);
                 }
 				activity.toast(R.string.wallet_address_fragment_clipboard_msg);

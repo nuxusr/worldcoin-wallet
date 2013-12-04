@@ -95,7 +95,7 @@ public class ExchangeRatesProvider extends ContentProvider
 
 		if (exchangeRates == null || now - lastUpdated > UPDATE_FREQ_MS)
 		{
-			Map<String, ExchangeRate> newExchangeRates = getLitecoinCharts();
+			Map<String, ExchangeRate> newExchangeRates = getWorldcoinCharts();
 			if (exchangeRates == null && newExchangeRates == null)
 				newExchangeRates = getBlockchainInfo();
 
@@ -126,7 +126,7 @@ public class ExchangeRatesProvider extends ContentProvider
             try {
 			  cursor.newRow().add(code.hashCode()).add(rate.currencyCode).add(rate.rate.longValue()).add(rate.source);
             } catch (NullPointerException e) {
-                Log.e("Litecoin", "Unable to add an exchange rate.  NullPointerException.");
+                Log.e("Worldcoin", "Unable to add an exchange rate.  NullPointerException.");
             }
 		}
 
@@ -166,13 +166,15 @@ public class ExchangeRatesProvider extends ContentProvider
 		throw new UnsupportedOperationException();
 	}
 
-	private static Map<String, ExchangeRate> getLitecoinCharts()
+	private static Map<String, ExchangeRate> getWorldcoinCharts()
 	{
         final Map<String, ExchangeRate> rates = new TreeMap<String, ExchangeRate>();
         // Keep the BTC rate around for a bit
         Double btcRate = 0.0;
 		try {
             String currencies[] = {"USD", "BTC", "RUR"};
+
+            //TODO: NUX
             String urls[] = {"https://btc-e.com/api/2/14/ticker", "https://btc-e.com/api/2/10/ticker", "https://btc-e.com/api/2/ltc_rur/ticker"};
             for(int i = 0; i < currencies.length; ++i) {
                 final String currencyCode = currencies[i];
@@ -203,7 +205,7 @@ public class ExchangeRatesProvider extends ContentProvider
                         reader.close();
                 }
             }
-            // Handle LTC/EUR special since we have to do maths
+            // Handle WDC/EUR special since we have to do maths
             final URL URL = new URL("https://btc-e.com/api/2/btc_eur/ticker");
             final URLConnection connection = URL.openConnection();
             connection.setConnectTimeout(TIMEOUT_MS);
@@ -219,7 +221,7 @@ public class ExchangeRatesProvider extends ContentProvider
                 final JSONObject head = new JSONObject(content.toString());
                 JSONObject ticker = head.getJSONObject("ticker");
                 Double avg = ticker.getDouble("avg");
-                // This is bitcoins priced in euros.  We want LTC!
+                // This is bitcoins priced in euros.  We want WDC!
                 avg *= btcRate;
                 String s_avg = String.format("%.4f", avg).replace(',', '.');
                 rates.put("EUR", new ExchangeRate("EUR", Utils.toNanoCoins(s_avg), URL.getHost()));

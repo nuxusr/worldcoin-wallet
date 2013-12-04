@@ -94,7 +94,7 @@ public final class TransactionFragment extends SherlockFragment
 	{
 		final Wallet wallet = ((WalletApplication) activity.getApplication()).getWallet();
 
-		final byte[] serializedTx = tx.unsafeLitecoinSerialize();
+		final byte[] serializedTx = tx.unsafeWorldcoinSerialize();
 
 		Address from = null;
 		boolean fromMine = false;
@@ -138,7 +138,7 @@ public final class TransactionFragment extends SherlockFragment
 			if (amountSent.signum() != 0)
 			{
 				final TextView viewAmountSent = (TextView) view.findViewById(R.id.transaction_fragment_amount_sent);
-				viewAmountSent.setText(Constants.CURRENCY_MINUS_SIGN + WalletUtils.formatValue(amountSent, Constants.LTC_PRECISION));
+				viewAmountSent.setText(Constants.CURRENCY_MINUS_SIGN + WalletUtils.formatValue(amountSent, Constants.WDC_PRECISION));
 			}
 		}
 		catch (final ScriptException x)
@@ -151,7 +151,7 @@ public final class TransactionFragment extends SherlockFragment
 		if (amountReceived.signum() != 0)
 		{
 			final TextView viewAmountReceived = (TextView) view.findViewById(R.id.transaction_fragment_amount_received);
-			viewAmountReceived.setText(Constants.CURRENCY_PLUS_SIGN + WalletUtils.formatValue(amountReceived, Constants.LTC_PRECISION));
+			viewAmountReceived.setText(Constants.CURRENCY_PLUS_SIGN + WalletUtils.formatValue(amountReceived, Constants.WDC_PRECISION));
 		}
 
 		final View viewFromButton = view.findViewById(R.id.transaction_fragment_from_button);
@@ -269,7 +269,7 @@ public final class TransactionFragment extends SherlockFragment
 				final byte[] gzippedSerializedTx = bos.toByteArray();
 				final boolean useCompressioon = gzippedSerializedTx.length < serializedTx.length;
 
-				final StringBuilder txStr = new StringBuilder("ltctx:");
+				final StringBuilder txStr = new StringBuilder("wdctx:");
 				txStr.append(useCompressioon ? 'Z' : '-');
 				txStr.append(Base43.encode(useCompressioon ? gzippedSerializedTx : serializedTx));
 

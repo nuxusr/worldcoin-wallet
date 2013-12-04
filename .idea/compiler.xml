@@ -23,6 +23,8 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="integration-android" />
+        <module name="litecoinj" />
+        <module name="litecoinj-tools" />
         <module name="sample-integration-android" />
         <module name="wallet" />
       </profile>
@@ -30,6 +32,8 @@
     <bytecodeTargetLevel>
       <module name="base" target="1.5" />
       <module name="integration-android" target="1.5" />
+      <module name="litecoinj" target="1.6" />
+      <module name="litecoinj-tools" target="1.6" />
       <module name="sample-integration-android" target="1.5" />
       <module name="wallet" target="1.5" />
     </bytecodeTargetLevel>

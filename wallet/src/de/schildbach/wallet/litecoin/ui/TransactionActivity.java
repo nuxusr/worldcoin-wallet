@@ -106,7 +106,7 @@ public final class TransactionActivity extends AbstractWalletActivity
 			final Wallet wallet = ((WalletApplication) getApplication()).getWallet();
 			tx = wallet.getTransaction((Sha256Hash) intent.getSerializableExtra(INTENT_EXTRA_TRANSACTION_HASH));
 		}
-		else if (intentUri != null && "ltctx".equals(scheme))
+		else if (intentUri != null && "wdctx".equals(scheme))
 		{
 			try
 			{
@@ -181,7 +181,7 @@ public final class TransactionActivity extends AbstractWalletActivity
 		transactionFragment.update(tx);
 
 		if (nfcManager != null)
-			NfcTools.publishMimeObject(nfcManager, this, Constants.MIMETYPE_TRANSACTION, tx.unsafeLitecoinSerialize(), false);
+			NfcTools.publishMimeObject(nfcManager, this, Constants.MIMETYPE_TRANSACTION, tx.unsafeWorldcoinSerialize(), false);
 	}
 
 	private void processPendingTransaction(final Transaction tx)

@@ -44,8 +44,8 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.litecoin.core.Address;
 import com.google.litecoin.core.AddressFormatException;
-import com.google.litecoin.uri.LitecoinURI;
-import com.google.litecoin.uri.LitecoinURIParseException;
+import com.google.litecoin.uri.WorldcoinURI;
+import com.google.litecoin.uri.WorldcoinURIParseException;
 
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
@@ -133,7 +133,7 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 				else
 				{
 					// TODO nicer cross-network handling
-					final LitecoinURI litecoinUri = new LitecoinURI(Constants.NETWORK_PARAMETERS, contents);
+					final WorldcoinURI litecoinUri = new WorldcoinURI(Constants.NETWORK_PARAMETERS, contents);
 					address = litecoinUri.getAddress();
 				}
 
@@ -151,7 +151,7 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 			{
 				activity.parseErrorDialog(contents);
 			}
-			catch (final LitecoinURIParseException x)
+			catch (final WorldcoinURIParseException x)
 			{
 				activity.parseErrorDialog(contents);
 			}
@@ -307,7 +307,7 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 
 	private void handleShowQr(final String address)
 	{
-		final String uri = LitecoinURI.convertToLitecoinURI(address, null, null, null);
+		final String uri = WorldcoinURI.convertToWorldcoinURI(address, null, null, null);
 		final int size = (int) (256 * getResources().getDisplayMetrics().density);
 		BitmapFragment.show(getFragmentManager(), WalletUtils.getQRCodeBitmap(uri, size));
 	}

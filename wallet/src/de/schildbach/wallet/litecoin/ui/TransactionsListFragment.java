@@ -369,7 +369,7 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
                     // I don't know how I can set the policy on this underneath AsyncTaskLoader
                     // Ideally, I'd like to use ThreadPoolExecutor.DiscardOldestPolicy
                     // This would just kill the oldest task and add this one.
-                    Log.d("Litecoin", "RejectedExecutionException on forceLoad()");
+                    Log.d("Worldcoin", "RejectedExecutionException on forceLoad()");
                 }
 			}
 		};
@@ -401,13 +401,13 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 
 	public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key)
 	{
-		if (Constants.PREFS_KEY_LTC_PRECISION.equals(key))
+		if (Constants.PREFS_KEY_WDC_PRECISION.equals(key))
 			updateView();
 	}
 
 	private void updateView()
 	{
-		adapter.setPrecision(Integer.parseInt(prefs.getString(Constants.PREFS_KEY_LTC_PRECISION, Integer.toString(Constants.LTC_PRECISION))));
+		adapter.setPrecision(Integer.parseInt(prefs.getString(Constants.PREFS_KEY_WDC_PRECISION, Integer.toString(Constants.WDC_PRECISION))));
 
 		adapter.clearLabelCache();
 	}

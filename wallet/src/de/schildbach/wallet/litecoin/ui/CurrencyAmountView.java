@@ -63,7 +63,7 @@ public final class CurrencyAmountView extends FrameLayout
 	private int significantColor, lessSignificantColor, errorColor;
 	private Drawable deleteButtonDrawable, contextButtonDrawable;
 	private CurrencyCodeDrawable currencyCodeDrawable;
-	private int precision = Constants.LTC_PRECISION;
+	private int precision = Constants.WDC_PRECISION;
 	private boolean amountSigned = false;
 	private boolean smallerInsignificant = true;
 	private boolean validateAmount = true;
@@ -124,7 +124,7 @@ public final class CurrencyAmountView extends FrameLayout
 		contextButton.setLayoutParams(chooseViewParams);
 		this.addView(contextButton);
 
-		setCurrencyCode(Constants.CURRENCY_CODE_LITECOIN);
+		setCurrencyCode(Constants.CURRENCY_CODE_WORLDCOIN);
 
 		updateAppearance();
 	}
